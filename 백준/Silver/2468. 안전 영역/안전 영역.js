@@ -38,8 +38,15 @@ function solution(input) {
   };
 
   let maxSafeRegionCount = 0;
+  let highestElevation = 0;
 
-  const highestElevation = Math.max(...elevationMap.flat());
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      if (elevationMap[i][j] > highestElevation) {
+        highestElevation = elevationMap[i][j];
+      }
+    }
+  }
 
   for (let waterLevel = 0; waterLevel <= highestElevation; waterLevel++) {
     const visited = Array.from({ length: N }, () => Array(N).fill(false));
